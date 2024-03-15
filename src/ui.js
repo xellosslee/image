@@ -114,7 +114,11 @@ export default class Ui {
     button.innerHTML = this.config.buttonContent || `${IconPicture} ${this.api.i18n.t('Select an Image')}`;
 
     button.addEventListener('click', () => {
-      this.onSelectFile();
+      if (typeof this.config.onClickEvent === 'function') {
+        this.config.onClickEvent(this.onSelectFile);
+      } else {
+        this.onSelectFile();
+      }
     });
 
     return button;
@@ -250,4 +254,3 @@ export default class Ui {
     this.nodes.wrapper.classList.toggle(`${this.CSS.wrapper}--${tuneName}`, status);
   }
 }
-

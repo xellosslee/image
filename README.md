@@ -1,5 +1,13 @@
 ![](https://badgen.net/badge/Editor.js/v2.0/blue)
 
+# 변경점
+
+이미지를 항상 파일 업로드가 아닌 별도 event handler 함수를 통해 이미 업로드된 이미지를 선택하는 기능 추가를 위해
+
+config: onClickEvent () => {}
+
+옵션을 추가함.
+
 # Image Tool
 
 Image Block for the [Editor.js](https://editorjs.io).
