@@ -115,7 +115,7 @@ export default class Ui {
 
     button.addEventListener('click', () => {
       if (typeof this.config.onClickEvent === 'function') {
-        this.config.onClickEvent(this.onSelectFile);
+        this.config.onClickEvent(this.onSelectFile, this, this.fillImage);
       } else {
         this.onSelectFile();
       }
@@ -132,7 +132,6 @@ export default class Ui {
    */
   showPreloader(src) {
     this.nodes.imagePreloader.style.backgroundImage = `url(${src})`;
-
     this.toggleStatus(Ui.status.UPLOADING);
   }
 
@@ -150,9 +149,11 @@ export default class Ui {
    * Shows an image
    *
    * @param {string} url - image source
+   * @param {object} thisObj - ui object
    * @returns {void}
    */
-  fillImage(url) {
+  fillImage(url, thisObj) {
+    const t = thisObj || this;
     /**
      * Check for a source extension to compose element correctly: video tag for mp4, img — for others
      */
@@ -198,23 +199,23 @@ export default class Ui {
      *
      * @type {Element}
      */
-    this.nodes.imageEl = make(tag, this.CSS.imageEl, attributes);
+    t.nodes.imageEl = make(tag, t.CSS.imageEl, attributes);
 
     /**
      * Add load event listener
      */
-    this.nodes.imageEl.addEventListener(eventName, () => {
-      this.toggleStatus(Ui.status.FILLED);
+    t.nodes.imageEl.addEventListener(eventName, () => {
+      t.toggleStatus(Ui.status.FILLED);
 
       /**
        * Preloader does not exists on first rendering with presaved data
        */
-      if (this.nodes.imagePreloader) {
-        this.nodes.imagePreloader.style.backgroundImage = '';
+      if (t.nodes.imagePreloader) {
+        t.nodes.imagePreloader.style.backgroundImage = '';
       }
     });
 
-    this.nodes.imageContainer.appendChild(this.nodes.imageEl);
+    t.nodes.imageContainer.appendChild(t.nodes.imageEl);
   }
 
   /**
