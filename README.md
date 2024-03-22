@@ -8,6 +8,8 @@ config: onClickEvent () => {}
 
 옵션을 추가함.
 
+onClickEvent 에서 직접 fillImage를 할 수 있게 ui 객체의 포인터와 fillImage 함수 파라미터 전달 추가.
+
 # Image Tool
 
 Image Block for the [Editor.js](https://editorjs.io).
