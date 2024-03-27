@@ -152,7 +152,6 @@ export default class Ui {
    * @returns {void}
    */
   fillImage(url) {
-    const t = this;
     /**
      * Check for a source extension to compose element correctly: video tag for mp4, img — for others
      */
@@ -198,23 +197,23 @@ export default class Ui {
      *
      * @type {Element}
      */
-    t.nodes.imageEl = make(tag, t.CSS.imageEl, attributes);
+    this.nodes.imageEl = make(tag, this.CSS.imageEl, attributes);
 
     /**
      * Add load event listener
      */
-    t.nodes.imageEl.addEventListener(eventName, () => {
-      t.toggleStatus(Ui.status.FILLED);
+    this.nodes.imageEl.addEventListener(eventName, () => {
+      this.toggleStatus(Ui.status.FILLED);
 
       /**
        * Preloader does not exists on first rendering with presaved data
        */
-      if (t.nodes.imagePreloader) {
-        t.nodes.imagePreloader.style.backgroundImage = '';
+      if (this.nodes.imagePreloader) {
+        this.nodes.imagePreloader.style.backgroundImage = '';
       }
     });
 
-    t.nodes.imageContainer.appendChild(t.nodes.imageEl);
+    this.nodes.imageContainer.appendChild(this.nodes.imageEl);
   }
 
   /**
