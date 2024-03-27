@@ -153,6 +153,7 @@ export default class ImageTool {
       uploader: config.uploader || undefined,
       actions: config.actions || [],
       onClickEvent: config.onClickEvent,
+      imageTool: this,
     };
 
     /**

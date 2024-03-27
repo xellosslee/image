@@ -115,7 +115,7 @@ export default class Ui {
 
     button.addEventListener('click', () => {
       if (typeof this.config.onClickEvent === 'function') {
-        this.config.onClickEvent(this.onSelectFile, this);
+        this.config.onClickEvent(this, this.config.imageTool);
       } else {
         this.onSelectFile();
       }
