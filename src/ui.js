@@ -115,7 +115,7 @@ export default class Ui {
 
     button.addEventListener('click', () => {
       if (typeof this.config.onClickEvent === 'function') {
-        this.config.onClickEvent(this.onSelectFile, this, this.fillImage);
+        this.config.onClickEvent(this.onSelectFile, this);
       } else {
         this.onSelectFile();
       }
@@ -149,11 +149,10 @@ export default class Ui {
    * Shows an image
    *
    * @param {string} url - image source
-   * @param {object} thisObj - ui object
    * @returns {void}
    */
-  fillImage(url, thisObj) {
-    const t = thisObj || this;
+  fillImage(url) {
+    const t = this;
     /**
      * Check for a source extension to compose element correctly: video tag for mp4, img — for others
      */
